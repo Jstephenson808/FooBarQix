@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(FooBarQixController.class)
 public class FooBarQixControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -20,4 +20,12 @@ public class FooBarQixControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("1"));
     }
+
+    @Test
+    void shouldBeTwoWhenInputIsTwo() throws Exception{
+        mockMvc.perform(post("/foobarqix").param("value", "2"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("2"));
+    }
+
 }

@@ -17,7 +17,6 @@ public class FooBarQixController {
 
     @PostMapping(path = "/foobarqix")
     public String post(@RequestParam("value") String value){
-        fooBarQixService.convert(value);
-        return value;
+        return fooBarQixService.convert(value);
     }
 }

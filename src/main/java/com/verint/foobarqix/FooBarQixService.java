@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class FooBarQixService {
 
     public String convert(String value) {
-        return null;
+        return value;
     }
 
 }

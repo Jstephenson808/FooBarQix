@@ -7,9 +7,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(FooBarQixController.class)
 class FooBarQixControllerTest {
@@ -21,24 +21,18 @@ class FooBarQixControllerTest {
     private FooBarQixService fooBarQixService;
 
     @Test
-    void shouldBeOneWhenInputIsOne() throws Exception {
-        mockMvc.perform(post("/foobarqix").param("value", "1"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("1"));
-    }
-
-    @Test
-    void shouldBeTwoWhenInputIsTwo() throws Exception{
-        mockMvc.perform(post("/foobarqix").param("value", "2"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("2"));
-    }
-
-    @Test
     void shouldInvokeServiceWithSuppliedValue() throws Exception {
         mockMvc.perform(post("/foobarqix").param("value", "1"));
 
         verify(fooBarQixService).convert("1");
+    }
+
+    @Test
+    void shouldReturnTheConversionFromTheService() throws Exception {
+        when(fooBarQixService.convert("6")).thenReturn("Foo");
+
+        mockMvc.perform(post("/foobarqix").param("value", "6"))
+               .andExpect(content().string("Foo"));
     }
 
 }

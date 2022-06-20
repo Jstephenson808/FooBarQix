@@ -17,11 +17,21 @@ class FooBarQixServiceTest {
 
     @Test
     void shouldConvertOneToOne() {
-        assertThat(fooBarQixService.convert("1"), is("1"));
+        assertThat(fooBarQixService.convert(1), is("1"));
     }
 
     @Test
     void shouldConvertTwoToTwo() {
-        assertThat(fooBarQixService.convert("2"), is("2"));
+        assertThat(fooBarQixService.convert(2), is("2"));
+    }
+
+    @Test
+    void shouldConvertSixToFoo() {
+        assertThat(fooBarQixService.convert(6), is("Foo"));
+    }
+
+    @Test
+    void shouldConvertNineToFoo() {
+        assertThat(fooBarQixService.convert(9), is("Foo"));
     }
 }

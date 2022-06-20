@@ -24,12 +24,12 @@ class FooBarQixControllerTest {
     void shouldInvokeServiceWithSuppliedValue() throws Exception {
         mockMvc.perform(post("/foobarqix").param("value", "1"));
 
-        verify(fooBarQixService).convert("1");
+        verify(fooBarQixService).convert(1);
     }
 
     @Test
     void shouldReturnTheConversionFromTheService() throws Exception {
-        when(fooBarQixService.convert("6")).thenReturn("Foo");
+        when(fooBarQixService.convert(6)).thenReturn("Foo");
 
         mockMvc.perform(post("/foobarqix").param("value", "6"))
                .andExpect(content().string("Foo"));

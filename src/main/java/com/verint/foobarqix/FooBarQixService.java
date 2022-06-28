@@ -9,10 +9,11 @@ public class FooBarQixService {
         String result;
         if (value % 3 == 0) {
             result = "Foo";
+        } else if (value == 10) {
+            result = "Bar";
         } else {
             result = value.toString();
         }
         return result;
     }
-
 }

@@ -41,7 +41,15 @@ class FooBarQixServiceTest {
     }
 
     @Test
-    void shouldConvertFiveToBar() {
+    void shouldConvertTwentyToBar() {
         assertThat(fooBarQixService.convert(20), is("Bar"));
+    }
+
+    @Test
+    void shouldConvertFourteenToQix() { assertThat(fooBarQixService.convert(14), is("Qix"));}
+
+    @Test
+    void shouldConvertTwentyEightToQix() {
+        assertThat(fooBarQixService.convert(28), is("Qix"));
     }
 }

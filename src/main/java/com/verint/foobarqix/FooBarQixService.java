@@ -6,19 +6,18 @@ import org.springframework.stereotype.Service;
 public class FooBarQixService {
 
     public String convert(Integer value) {
-        StringBuilder result = new StringBuilder();
-        result.append(convertDivisibleBy(value));
-        if (value == 13) {
-            result.append("Foo");
+        String result = "";
+        result += convertDivisibleBy(value);
+        if (value.toString().contains("3")) {
+            result += "Foo";
         }
         if (result.isEmpty()) {
-            return value.toString();
-        } else {
-            return result.toString();
+            result = value.toString();
         }
+        return result;
     }
 
-    private String convertDivisibleBy(Integer value){
+    private String convertDivisibleBy(Integer value) {
         String result = "";
         if (value % 3 == 0) {
             result = "Foo";

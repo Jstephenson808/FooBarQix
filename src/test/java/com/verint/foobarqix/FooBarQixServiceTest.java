@@ -34,4 +34,32 @@ class FooBarQixServiceTest {
     void shouldConvertNineToFoo() {
         assertThat(fooBarQixService.convert(9), is("Foo"));
     }
+
+    @Test
+    void shouldConvertTenToBar() {
+        assertThat(fooBarQixService.convert(10), is("Bar"));
+    }
+
+    @Test
+    void shouldConvertTwentyToBar() {
+        assertThat(fooBarQixService.convert(20), is("Bar"));
+    }
+
+    @Test
+    void shouldConvertFourteenToQix() { assertThat(fooBarQixService.convert(14), is("Qix"));}
+
+    @Test
+    void shouldConvertTwentyEightToQix() {
+        assertThat(fooBarQixService.convert(28), is("Qix"));
+    }
+
+    @Test
+    void shouldConvertThirteenToFoo() {
+        assertThat(fooBarQixService.convert(13), is("Foo"));
+    }
+
+    @Test
+    void shouldConvertThreeToFooFoo() {
+        assertThat(fooBarQixService.convert(3), is("FooFoo"));
+    }
 }
